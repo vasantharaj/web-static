@@ -12,7 +12,7 @@ ECS_SERVICE_NAME='ecs-demo'
 ECS_TASK_DEFINITION_NAME='web-app-demo'
 DOCKER_IMAGE_NAME='vasanth220892/web-static'
 #Docker_Registry_URI='account-number.dkr.ecr.us-west-2.amazonaws.com'
-VERSION=${GIT_BRANCH}-V_${BUILD_NUMBER}
+VERSION=${GIT_BRANCH##origin/}-V_${BUILD_NUMBER}
 AWSCLI_VER_TAR=1.11.91
 # END CUSTOMIZATIONS #
 
@@ -32,7 +32,7 @@ fi
   
 
   # Store revision
-  REVISION=${GIT_BRANCH}
+  REVISION=${GIT_BRANCH##origin/}
 
   # Get previous task definition from ECS
   PREVIOUS_TASK_DEF=$(aws ecs describe-task-definition --region "${ECS_REGION}" --task-definition "${ECS_TASK_DEFINITION_NAME}")
