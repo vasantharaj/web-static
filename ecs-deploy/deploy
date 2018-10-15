@@ -51,10 +51,6 @@ definition[1]['environment'].extend([
     'value' : '${VERSION}'
   }])
 definition[1]['image'] = '${DOCKER_IMAGE_NAME}:${VERSION}'
-definition[1]['memory'].extend([
-  {
-     'name' : 'memory',
-     'value' : '256'}])
 print json.dumps(definition)
 EOF
   ))
