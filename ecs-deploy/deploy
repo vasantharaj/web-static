@@ -41,6 +41,14 @@ fi
   NEW_CONTAINER_DEF=$(echo "${PREVIOUS_TASK_DEF}" | python <(cat <<-EOF
 import sys, json
 definition = json.load(sys.stdin)['taskDefinition']['containerDefinitions']
+definition[0].extend([
+{
+   'name' : 'memory',
+   'value' : '256'}])
+definition[1].extend([
+{
+   'name' : 'memory',
+   'value' : '256'}])
 definition[1]['environment'].extend([
   {
     'name' : 'REVISION',
